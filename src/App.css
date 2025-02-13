@@ -1,38 +1,93 @@
-.App {
-  text-align: center;
+body{
+  background-color: #0D1426;
+}
+.container {
+  width: 90%;
+  margin: 50px auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.row {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
+  flex-flow: wrap;    gap: 48px; /* إضافة مساحة بين البطاقات */
+
+}
+.card {
+  width: 230px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: white;
+    transition: transform 0.3s ease;
+
+} 
+
+.card .text {
+  padding: 2px 16px;
+
+}
+.card-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+/* Header.css */
+.header {
+  display: flex;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  border-bottom: 0.2px solid #0f0b0b; /* Add a bottom border line */
+  padding: 2rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
 }
 
-.App-link {
-  color: #61dafb;
+.header .logo h1 {
+  margin: 0;
+  font-size: 24px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-links {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
 }
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links a {
+  padding: 10px 0 10px 30px;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  color: white;
+  white-space: nowrap;
+  transition: 0.3s;
+  text-decoration:none ;
+}
+.nav-links a:hover {
+  color: #ff9900;
+}
+.intro{
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 798px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .intro{
+    margin: 0;
+    font-size: 55px;
+    font-weight: 300;
+    color: #255a7e;
+  }
