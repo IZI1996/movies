@@ -1,6 +1,6 @@
 import React from 'react'
 
-const List = ({data}) => {
+const List = ({data,value}) => {
  
     return (
         <>
@@ -8,8 +8,7 @@ const List = ({data}) => {
             data.results.map((movie, index) => (
               <div key={index}>
                 <h2>{movie.title}</h2>
-                <p>{movie.overview}</p>
-                <p>التقييم: {movie.vote_average}</p>
+               
               
               </div>
             ))
@@ -28,7 +27,8 @@ const List = ({data}) => {
                   alt={movies.title} 
                 />
  <div class="text">
-    <h4><b>{movies.title}</b></h4> 
+    <h4>{movies.title}</h4> 
+    <p>التقييم: {movies.vote_average}</p>
   </div>
                 </div>
               )) 
