@@ -1,21 +1,51 @@
 import React, { useState } from "react";
 
 const Tabs = ({ TabonChange, data }) => {
-    const [TabChange, setTabChange] = useState('');
+    const [selectedMovie, setSelectedMovie] = useState(null);
+    const period = ['2024', '2025'];
+    const newMovies = () => {
+        if (!data?.results?.length) return;
 
-    const handleTabChange = () => {
-        // نتحقق من البيانات ونقارن التاريخ الديناميكي بدلاً من الثابت
-        const currentMovie = data?.results[0]; // الحصول على أول فيلم كمثال
-        if (currentMovie && currentMovie.release_date) {
-            setTabChange(currentMovie);  // تحديث الحالة المحلية بالمعلومات الحالية
-            TabonChange(currentMovie);   // إرسال البيانات للمكون الأب
-        }
+        data.results.forEach((currentMovie) => {
+            if (currentMovie && currentMovie.release_date) {
+                const releaseYear = parseInt(currentMovie.release_date.slice(0, 4)); 
+                const startYear = parseInt(period[0]); 
+                const endYear = parseInt(period[1]);   
+
+                if (releaseYear >= startYear && releaseYear <= endYear) {
+                    setSelectedMovie(currentMovie); 
+                    TabonChange(currentMovie); 
+                    console.log(currentMovie)
+
+                }
+            }
+        });
     };
 
+
+
+    const puplarMovies = () => {
+        if (!data?.results?.length) return;
+
+        // التكرار عبر جميع الأفلام في المصفوفة
+        data.results.forEach((currentMovie) => {
+            if (currentMovie && currentMovie.vote_average) {
+             
+   const average= currentMovie.vote_average;
+                // تحقق إذا كانت السنة داخل النطاق
+                if (average >= 7 ) {
+                    setSelectedMovie(currentMovie); 
+                    TabonChange(currentMovie); 
+console.log(currentMovie)
+                }
+            }
+        });
+    };
     return (
         <div className="tabs-container">
-            <button onClick={handleTabChange}>شائع</button>
-            {/* يمكن إضافة المزيد من الأزرار للتبويبات الأخرى */}
+            <button onClick={newMovies}>new</button>
+            <button onClick={puplarMovies}>puplar</button>
+
         </div>
     );
 };
